@@ -10,21 +10,22 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        ResetHealth();
     }
 
     void ResetHealth()
     {
-
+        health = maxHealth;
     }
 
-    void LoseHealth()
+    void LoseHealth(int damage)
     {
-
+        health -= damage;
     }
 
-    void ReplenishHealth()
+    void ReplenishHealth(int heal)
     {
-
+        health += heal;
+        health = Mathf.Clamp(health, 0, maxHealth);
     }
 }
