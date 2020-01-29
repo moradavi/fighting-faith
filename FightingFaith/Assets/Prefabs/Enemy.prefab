@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5673625259386413519}
   - component: {fileID: 5048767567076276415}
+  - component: {fileID: 4818729177366331215}
+  - component: {fileID: 3176808381268188329}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -43,3 +45,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d29c6c8d36faf443860d08882f5db35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4818729177366331215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9153865000080321101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dcfd30179ee3064cb6eefdc0e822973, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+--- !u!114 &3176808381268188329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9153865000080321101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fa81d85b2b3af94498c2ae9b723e0e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints: []
+  waypointPauseTime: 0
+  speed: 0
