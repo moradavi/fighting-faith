@@ -9,27 +9,17 @@ public class Defend : MonoBehaviour
 
     public float timeLimit;
     float timer;
-
-    public List<GameObject> allPoints;
-
+    
     public List<GameObject> defensePoints;
     public List<GameObject> pointsToHit;
+
+    //public List<GameObject> pointsNotHit;
 
     // Start is called before the first frame update
     void Start()
     {
         timer = 0;
-        
-        defensePoints = allPoints;
-        
-        for( int i = 0; i < numOfPoints; i++)
-        {
-            int indexPoint = Random.Range(0, defensePoints.Count - 1);
-            GameObject randomPoint = defensePoints[indexPoint];
-
-            pointsToHit.Add(randomPoint);
-            defensePoints.RemoveAt(indexPoint);
-        }
+        ResetPattern();
         
     }
 
@@ -40,15 +30,53 @@ public class Defend : MonoBehaviour
 
         if(timer >= timeLimit)
         {
-            Debug.Log("GAME OVER");
+            ResetPattern();
         }
 
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = -1;
 
-        //if (Input.GetMouseButton(0))
-        //{
+        if (Input.GetMouseButton(0))
+        {
+            Collider2D[] frameCol = Physics2D.OverlapPointAll(new Vector2(mousePos.x, mousePos.y), LayerMask.GetMask("Defend"));
+            foreach (Collider2D col in frameCol)
+            {
+                if (pointsToHit.Contains(col.gameObject))
+                {
+                    for(int i = 0; i < pointsToHit.Count; i++)
+                    {
+                        if(pointsToHit[i] == col.gameObject)
+                        {
+                            defensePoints.Add(pointsToHit[i]);
+                            pointsToHit.RemoveAt(i);
 
-        //}
+                            if(pointsToHit.Count == 0)
+                            {
+                                Debug.Log("Yay");
+                                ResetPattern();
+                            }
 
+                        }
+                    }
+                }
+            }
+        }
+        
 
     }
+
+    void ResetPattern()
+    {
+        for (int i = 0; i < numOfPoints; i++)
+        {
+            int indexPoint = Random.Range(0, defensePoints.Count - 1);
+            GameObject randomPoint = defensePoints[indexPoint];
+
+            pointsToHit.Add(randomPoint);
+            defensePoints.RemoveAt(indexPoint);
+        }
+        
+    }
+    
+
 }

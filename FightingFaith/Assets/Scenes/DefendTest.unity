@@ -518,7 +518,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1078682723}
   - component: {fileID: 1078682722}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DefendManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -537,6 +537,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a460b0f378d74ed4da66836327eee264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numOfPoints: 3
+  timeLimit: 300
   defensePoints:
   - {fileID: 429304721}
   - {fileID: 1651419506}
@@ -547,8 +549,7 @@ MonoBehaviour:
   - {fileID: 1371840517}
   - {fileID: 1044453863}
   - {fileID: 1349275375}
-  numOfPoints: 3
-  timeLimit: 300
+  pointsToHit: []
 --- !u!4 &1078682723
 Transform:
   m_ObjectHideFlags: 0
