@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public Health health;
     public WaypointMovement waypointMovement;
-    Collider2D collider;
+    public Collider2D enemyCollider;
     
     // Start is called before the first frame update
     void Start()

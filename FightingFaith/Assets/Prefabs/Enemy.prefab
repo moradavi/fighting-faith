@@ -129,6 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 4818729177366331215}
   waypointMovement: {fileID: 3176808381268188329}
+  enemyCollider: {fileID: 2410368888122817593}
 --- !u!114 &4818729177366331215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,12 +142,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dcfd30179ee3064cb6eefdc0e822973, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 10
   onDeath:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  maxHealth: 10
 --- !u!114 &3176808381268188329
 MonoBehaviour:
   m_ObjectHideFlags: 0
