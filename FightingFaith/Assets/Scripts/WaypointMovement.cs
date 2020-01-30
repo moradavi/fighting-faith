@@ -14,12 +14,14 @@ public class WaypointMovement : MonoBehaviour
     int targetWaypointIndex;
     
     public bool IsMoving { get; private set; }
+    public bool IsStopped { get; private set; }
     public UnityEvent onTargetArrive;
 
     // Start is called before the first frame update
     void Start()
     {
         //Set intial target waypoint
+        IsStopped = false;
         targetWaypointIndex = Random.Range(0, waypoints.Count);
         SetTargetWaypoint(waypoints[targetWaypointIndex]);
     }
@@ -44,13 +46,21 @@ public class WaypointMovement : MonoBehaviour
 
     public void StopWaypointMovement()
     {
-        IsMoving = false;
-        CancelInvoke();
+        if (!IsStopped)
+        {
+            IsMoving = false;
+            IsStopped = true;
+            CancelInvoke();
+        }       
     }
 
     public void ResumeWaypointMovement()
     {
-        IsMoving = true;
+        if (IsStopped)
+        {
+            IsMoving = true;
+            IsStopped = false;
+        }      
     }
 
     void SetNewRandomTargetWaypoint()
