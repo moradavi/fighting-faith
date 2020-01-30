@@ -141,7 +141,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dcfd30179ee3064cb6eefdc0e822973, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  maxHealth: 10
 --- !u!114 &3176808381268188329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,14 +159,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa81d85b2b3af94498c2ae9b723e0e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waypoints: []
+  waypointPauseTime: 2
+  speed: 4
   onTargetArrive:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  waypoints: []
-  waypointPauseTime: 2
-  speed: 4
 --- !u!58 &2410368888122817593
 CircleCollider2D:
   m_ObjectHideFlags: 0
