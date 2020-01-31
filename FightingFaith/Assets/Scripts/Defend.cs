@@ -27,10 +27,12 @@ public class Defend : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
+        //Debug.Log(timer);
 
         if(timer >= timeLimit)
         {
-            ResetPattern();
+            Debug.Log("TIMEOUT");
+            //ResetPattern();
         }
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -53,13 +55,25 @@ public class Defend : MonoBehaviour
                             if(pointsToHit.Count == 0)
                             {
                                 Debug.Log("Yay");
-                                ResetPattern();
+                                //ResetPattern();
                             }
 
                         }
                     }
                 }
             }
+        }
+
+        else if (Input.GetMouseButtonUp(0))
+        {
+            for (int i = 0; i < pointsToHit.Count; i++)
+            {
+                defensePoints.Add(pointsToHit[i]);
+                pointsToHit.RemoveAt(i);
+            }
+
+            Debug.Log("Failed Attempt");
+            //ResetPattern();
         }
         
 
@@ -69,8 +83,8 @@ public class Defend : MonoBehaviour
     {
         for (int i = 0; i < numOfPoints; i++)
         {
-            int indexPoint = Random.Range(0, defensePoints.Count - 1);
-            GameObject randomPoint = defensePoints[indexPoint];
+            int indexPoint = Random.Range(0, defensePoints.Count);
+            GameObject randomPoint = defensePoints[1];
 
             pointsToHit.Add(randomPoint);
             defensePoints.RemoveAt(indexPoint);
