@@ -12,9 +12,12 @@ public class WaypointMovement : MonoBehaviour
     Transform targetWaypoint;
     Transform currentWaypoint;
     int targetWaypointIndex;
-    
+
+    //Properties
     public bool IsMoving { get; private set; }
     public bool IsStopped { get; private set; }
+
+    //Events
     public UnityEvent onTargetArrive;
 
     // Start is called before the first frame update
@@ -31,7 +34,7 @@ public class WaypointMovement : MonoBehaviour
     {
         //Move towards the target waypoint
         if (IsMoving)
-            transform.position = Vector2.MoveTowards(transform.position, targetWaypoint.position, Time.deltaTime * speed * 150);
+            transform.position = Vector2.MoveTowards(transform.position, targetWaypoint.position, Time.deltaTime * speed);
 
         //If arrived at the target waypoint
         if ((transform.position == targetWaypoint.position) && IsMoving == true)
