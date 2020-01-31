@@ -31,7 +31,7 @@ public class WaypointMovement : MonoBehaviour
     {
         //Move towards the target waypoint
         if (IsMoving)
-            transform.position = Vector2.MoveTowards(transform.position, targetWaypoint.position, Time.deltaTime * speed * 50);
+            transform.position = Vector2.MoveTowards(transform.position, targetWaypoint.position, Time.deltaTime * speed * 150);
 
         //If arrived at the target waypoint
         if ((transform.position == targetWaypoint.position) && IsMoving == true)
