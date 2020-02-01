@@ -308,6 +308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneNum: 0
+  tapChange: 1
 --- !u!4 &452276726
 Transform:
   m_ObjectHideFlags: 0
