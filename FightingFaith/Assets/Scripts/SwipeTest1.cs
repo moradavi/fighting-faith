@@ -10,12 +10,11 @@ public class SwipeTest1 : MonoBehaviour
     Camera cam;
 
     Vector2 oldPos;
+    Vector2 newPos;
+
     public float minSlashSpeed;
 
-    public CircleCollider2D myCollider;
-
     float velocity;
-
 
     // Start is called before the first frame update
     void Start()
@@ -44,11 +43,10 @@ public class SwipeTest1 : MonoBehaviour
 
     void UpdateSwipe()
     {
-        Vector2 newPos = cam.ScreenToWorldPoint(Input.mousePosition);
+        newPos = cam.ScreenToWorldPoint(Input.mousePosition);
 
         rb.position = newPos;
         velocity = (newPos - oldPos).magnitude * Time.deltaTime;
-
         oldPos = newPos;
     }
 
