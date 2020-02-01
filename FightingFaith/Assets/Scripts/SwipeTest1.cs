@@ -8,17 +8,20 @@ public class SwipeTest1 : MonoBehaviour
 
     Rigidbody2D rb;
     Camera cam;
-    CircleCollider2D circleColl;
 
     Vector2 oldPos;
     public float minSlashSpeed;
+
+    public CircleCollider2D myCollider;
+
+    float velocity;
+
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         cam = Camera.main;
-        circleColl = GetComponent<CircleCollider2D>();
     }
 
     // Update is called once per frame
@@ -44,15 +47,7 @@ public class SwipeTest1 : MonoBehaviour
         Vector2 newPos = cam.ScreenToWorldPoint(Input.mousePosition);
 
         rb.position = newPos;
-        float velocity = (newPos - oldPos).magnitude * Time.deltaTime;
-
-        if (velocity > minSlashSpeed)
-        {
-            circleColl.enabled = true;
-        } else
-        {
-            circleColl.enabled = false;
-        }
+        velocity = (newPos - oldPos).magnitude * Time.deltaTime;
 
         oldPos = newPos;
     }
@@ -61,11 +56,18 @@ public class SwipeTest1 : MonoBehaviour
     {
         isSwiping = true;
         oldPos = cam.ScreenToWorldPoint(Input.mousePosition);
-        circleColl.enabled = false;
     }
+
     void EndSwiping()
     {
         isSwiping = false;
-        circleColl.enabled = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (velocity > minSlashSpeed)
+        {
+            Debug.Log("Hit");
+        }
     }
 }
