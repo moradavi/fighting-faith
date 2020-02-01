@@ -1701,6 +1701,11 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[5]
       value: 
       objectReference: {fileID: 1433524691}
+    - target: {fileID: 4818729177366331215, guid: f707b857244466842ba1ca2cbb483d8e,
+        type: 3}
+      propertyPath: maxHealth
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 5673625259386413519, guid: f707b857244466842ba1ca2cbb483d8e,
         type: 3}
       propertyPath: m_LocalPosition.x
