@@ -12,11 +12,19 @@ public class ManageScenes : MonoBehaviour
     {
         if (tapChange && Input.GetMouseButtonDown(0))
         {
-            ChangeScene();
+            LoadNewScene();
         }
     }
 
     public void ChangeScene()
+    {
+        if (gameObject.GetComponent<Animator>() != null)
+        {
+            gameObject.GetComponent<Animator>().enabled = true;
+        }
+    }
+
+    public void LoadNewScene()
     {
         SceneManager.LoadScene(sceneNum);
     }
