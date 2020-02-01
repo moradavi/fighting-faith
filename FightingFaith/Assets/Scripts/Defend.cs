@@ -84,7 +84,7 @@ public class Defend : MonoBehaviour
         for (int i = 0; i < numOfPoints; i++)
         {
             int indexPoint = Random.Range(0, defensePoints.Count);
-            GameObject randomPoint = defensePoints[1];
+            GameObject randomPoint = defensePoints[indexPoint];
 
             pointsToHit.Add(randomPoint);
             defensePoints.RemoveAt(indexPoint);

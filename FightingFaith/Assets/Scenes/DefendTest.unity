@@ -537,7 +537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a460b0f378d74ed4da66836327eee264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numOfPoints: 3
+  numOfPoints: 2
   timeLimit: 3
   defensePoints:
   - {fileID: 429304721}
