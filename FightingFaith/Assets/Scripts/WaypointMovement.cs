@@ -12,9 +12,12 @@ public class WaypointMovement : MonoBehaviour
     Transform targetWaypoint;
     Transform currentWaypoint;
     int targetWaypointIndex;
-    
+
+    //Properties
     public bool IsMoving { get; private set; }
     public bool IsStopped { get; private set; }
+
+    //Events
     public UnityEvent onTargetArrive;
 
     // Start is called before the first frame update
