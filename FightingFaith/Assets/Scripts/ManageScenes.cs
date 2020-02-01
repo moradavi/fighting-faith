@@ -6,17 +6,18 @@ using UnityEngine.SceneManagement;
 public class ManageScenes : MonoBehaviour
 {
     public int sceneNum;
+    public bool tapChange;
 
-    void Update()
+    public void Update()
     {
-        ChangeScene();
+        if (tapChange && Input.GetMouseButtonDown(0))
+        {
+            ChangeScene();
+        }
     }
 
-    void ChangeScene()
+    public void ChangeScene()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            SceneManager.LoadScene(sceneNum);
-        }
+        SceneManager.LoadScene(sceneNum);
     }
 }
