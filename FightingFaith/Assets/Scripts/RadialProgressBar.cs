@@ -10,6 +10,7 @@ public class RadialProgressBar : MonoBehaviour
     public float speed;
 
     public ManageScenes sceneManager;
+    public GameObject particleBurst;
 
     void Update()
     {
@@ -26,6 +27,7 @@ public class RadialProgressBar : MonoBehaviour
         if (currentAmount >= 100)
         {
             sceneManager.ChangeScene();
+            particleBurst.SetActive(true);
         }
 
         loadingBar.GetComponent<Image>().fillAmount = currentAmount / 100;
