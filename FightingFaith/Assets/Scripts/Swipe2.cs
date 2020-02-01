@@ -26,6 +26,7 @@ public class Swipe2 : MonoBehaviour
                 foreach(Collider2D col in frameCol)
                 {
                     Debug.Log("hit");
+                    col.gameObject.GetComponent<Health>().LoseHealth(1);
                 }
             }
             
