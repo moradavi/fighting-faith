@@ -1836,32 +1836,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 726024733004007576, guid: f707b857244466842ba1ca2cbb483d8e,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5048767567076276415, guid: f707b857244466842ba1ca2cbb483d8e,
-        type: 3}
-      propertyPath: regularSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5048767567076276415, guid: f707b857244466842ba1ca2cbb483d8e,
-        type: 3}
-      propertyPath: enragedSpeed
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 5048767567076276415, guid: f707b857244466842ba1ca2cbb483d8e,
         type: 3}
       propertyPath: regularWait
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 4232948721586797591, guid: f707b857244466842ba1ca2cbb483d8e,
+    - target: {fileID: 726024733004007576, guid: f707b857244466842ba1ca2cbb483d8e,
         type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 39c24052b7711d944ab5110d08bd7b9d,
-        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4232948721586797591, guid: f707b857244466842ba1ca2cbb483d8e,
         type: 3}
       propertyPath: m_Size.x
