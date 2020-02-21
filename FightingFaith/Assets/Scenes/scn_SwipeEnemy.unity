@@ -2073,6 +2073,11 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 694999166980773125, guid: f707b857244466842ba1ca2cbb483d8e,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f707b857244466842ba1ca2cbb483d8e, type: 3}
 --- !u!1 &6788620697501214568 stripped
@@ -2112,4 +2117,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61360bc96ed2524695b1fec207586c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
