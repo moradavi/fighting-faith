@@ -13,12 +13,12 @@ public class Enemy : MonoBehaviour
     public float regularSpeed;
     public float enragedSpeed;
 
-    // Start is called before the first frame update
     void Start()
     {
         LoadEnemyData();
     }
 
+    //Assign enemy data
     void LoadEnemyData()
     {
         spriteRenderer.sprite = enemyData.sprite;
@@ -28,12 +28,14 @@ public class Enemy : MonoBehaviour
         waypointMovement.waypointPauseTime = enemyData.waypointPauseTime;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        //Assign speed
         EnemyMovement();
     }
 
+
+    //Enemy speed changes after its health is reduced to 1/3 of maximum
     void EnemyMovement()
     {
         if (health.CurrentHealth <= health.maxHealth / 3)
