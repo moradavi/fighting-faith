@@ -69,12 +69,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 68b3551697c496c4d9a4de1a44651771, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e4d7ba2362380d54db2584b25ffbddf8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.12, y: 5.12}
+  m_Size: {x: 7.92, y: 7.87}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -127,9 +127,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d29c6c8d36faf443860d08882f5db35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 4232948721586797591}
+  enemyData: {fileID: 11400000, guid: 3256be9456e2f9c4caab34e3c5a609fd, type: 2}
   health: {fileID: 4818729177366331215}
   waypointMovement: {fileID: 3176808381268188329}
   enemyCollider: {fileID: 2410368888122817593}
+  regularSpeed: 0
+  enragedSpeed: 0
 --- !u!114 &4818729177366331215
 MonoBehaviour:
   m_ObjectHideFlags: 0

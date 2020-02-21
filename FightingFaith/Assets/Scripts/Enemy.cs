@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public Sprite sprite;
-
+    public SpriteRenderer spriteRenderer;
+    public EnemyData enemyData;
     public Health health;
     public WaypointMovement waypointMovement;
     public Collider2D enemyCollider;
@@ -16,7 +16,16 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        LoadEnemyData();
+    }
 
+    void LoadEnemyData()
+    {
+        spriteRenderer.sprite = enemyData.sprite;
+        regularSpeed = enemyData.regularSpeed;
+        enragedSpeed = enemyData.enragedSpeed;
+        health.maxHealth = enemyData.maxHP;
+        waypointMovement.waypointPauseTime = enemyData.waypointPauseTime;
     }
 
     // Update is called once per frame
