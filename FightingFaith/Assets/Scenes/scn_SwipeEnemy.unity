@@ -1075,7 +1075,7 @@ GameObject:
   - component: {fileID: 1200716416}
   - component: {fileID: 1200716415}
   m_Layer: 0
-  m_Name: spr_lightVerBackground1
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
