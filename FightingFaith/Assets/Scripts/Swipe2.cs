@@ -27,6 +27,7 @@ public class Swipe2 : MonoBehaviour
                 {
                     Debug.Log("hit");
                     col.gameObject.GetComponent<Health>().LoseHealth(1);
+                    col.gameObject.GetComponentInChildren<FlashDamage>().FlashTrigger();
                 }
             }
             
