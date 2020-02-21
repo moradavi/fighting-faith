@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: e4d7ba2362380d54db2584b25ffbddf8, type: 3}
   maxHP: 30
-  waypointMoveSpeed: 4
+  regularSpeed: 4
+  enragedSpeed: 10
   waypointPauseTime: 2
   attackTime: 15

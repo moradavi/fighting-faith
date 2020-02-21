@@ -7,7 +7,8 @@ public class EnemyData : ScriptableObject
 {
     public Sprite sprite;
     public int maxHP;
-    public int waypointMoveSpeed;
+    public float regularSpeed;
+    public float enragedSpeed;
     public int waypointPauseTime;
     public int attackTime;
 
