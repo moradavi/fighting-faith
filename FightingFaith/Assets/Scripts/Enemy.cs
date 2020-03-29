@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
@@ -12,6 +13,13 @@ public class Enemy : MonoBehaviour
 
     public float regularSpeed;
     public float enragedSpeed;
+    public float attackIntervalTime = 15f;
+    public bool isAttacking;
+    float attackTimer;
+    float numAttacksTotal = 0;
+    public bool attackCodeEnabled;
+
+    public UnityEvent onAttack;
 
     void Start()
     {
@@ -30,10 +38,42 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        //Assign speed
-        EnemyMovement();
+        if (attackCodeEnabled)
+        {
+            if ((attackTimer < attackIntervalTime) && (isAttacking == false))
+            {
+                attackTimer += Time.deltaTime;
+                EnemyMovement();
+            }
+            else if (isAttacking == false)
+            {
+                Attack();
+            }
+        }
+        else
+        {
+            EnemyMovement();
+        }
+               
     }
 
+    void Attack()
+    {
+        isAttacking = true;
+        waypointMovement.StopWaypointMovement();
+        attackTimer++;
+        numAttacksTotal++;
+        onAttack.Invoke();
+        
+        //Trigger Attack Animation
+    }
+
+    public void StopAttacking()
+    {
+        isAttacking = false;
+        attackTimer = 0;
+        waypointMovement.ResumeWaypointMovement();
+    }
 
     //Enemy speed changes after its health is reduced to 1/3 of maximum
     void EnemyMovement()
