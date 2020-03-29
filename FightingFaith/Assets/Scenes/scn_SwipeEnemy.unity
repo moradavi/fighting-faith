@@ -1418,6 +1418,7 @@ MonoBehaviour:
   tapChange: 0
   currentScene: 0
   playerHealth: {fileID: 549108327}
+  timerTracker: {fileID: 1798442280}
 --- !u!4 &691433525
 Transform:
   m_ObjectHideFlags: 0
@@ -2303,6 +2304,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 726024733004007576, guid: f707b857244466842ba1ca2cbb483d8e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3176808381268188329, guid: f707b857244466842ba1ca2cbb483d8e,
         type: 3}
       propertyPath: waypoints.Array.size
@@ -2447,11 +2453,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 726024733004007576, guid: f707b857244466842ba1ca2cbb483d8e,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1563514644179694867, guid: f707b857244466842ba1ca2cbb483d8e,
         type: 3}
