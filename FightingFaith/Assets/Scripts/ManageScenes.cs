@@ -51,9 +51,7 @@ public class ManageScenes : MonoBehaviour
             }
         }
 
-        //Analytics.CustomEvent("SceneTimer");
-
-
+        //Trigger SceneTimer analytics event
         timerTracker.GetComponent<AnalyticsEventTracker>().TriggerEvent();
 
         SceneManager.LoadScene(sceneNum);       
