@@ -14,6 +14,11 @@ public class Defend : MonoBehaviour
     public List<GameObject> defensePoints;
     public List<GameObject> pointsToHit;
 
+    public List<GameObject> points;
+    public List<GameObject> duplicatePoints;
+
+    public bool patternComplete;
+
     //public List<GameObject> pointsNotHit;
 
     // Start is called before the first frame update
@@ -43,7 +48,7 @@ public class Defend : MonoBehaviour
         mousePos.z = -1;
 
         //if the player is inputting, pressing on screen
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && !patternComplete)
         {
             //and it hits a defense node
             Collider2D[] frameCol = Physics2D.OverlapPointAll(new Vector2(mousePos.x, mousePos.y), LayerMask.GetMask("Defend"));
@@ -57,48 +62,101 @@ public class Defend : MonoBehaviour
                         //count it as hit
                         if(pointsToHit[i] == col.gameObject)
                         {
-                            defensePoints.Add(pointsToHit[i]);
+                            //defensePoints.Add(pointsToHit[i]);
                             pointsToHit.RemoveAt(i);
 
                             //if all of the points are hit, player has succeeded in defending
                             if(pointsToHit.Count == 0)
                             {
                                 Debug.Log("Yay");
-                                //ResetPattern();
+                                Invoke( "ResetPattern", 2f);
+                                patternComplete = true;
                             }
 
                         }
                     }
                 }
             }
+
+            
+
+
         }
+
+
 
         //if the player does not finish the pattern, count as failed attempt
         else if (Input.GetMouseButtonUp(0))
         {
-            for (int i = 0; i < pointsToHit.Count; i++)
+            if (!patternComplete)
             {
-                defensePoints.Add(pointsToHit[i]);
-                pointsToHit.RemoveAt(i);
+                for (int i = 0; i < pointsToHit.Count; i++)
+                {
+                    pointsToHit.Clear();
+                }
+
+                Debug.Log("Failed Attempt");
+                Invoke("ResetPattern", 2f);
             }
 
-            Debug.Log("Failed Attempt");
-            //ResetPattern();
+            else
+            {
+                patternComplete = false;
+            }
+            
         }
-        
+
+
+        for (int i = 0; i < defensePoints.Count; i++)
+        {
+            defensePoints[i].gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        }
+
+        for (int i = 0; i < pointsToHit.Count; i++)
+        {
+            pointsToHit[i].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+
+        }
+
 
     }
 
     void ResetPattern()
     {
+        for (int i = 0; i < defensePoints.Count; i++)
+        {
+            points.Add(defensePoints[i]);
+        }
+        
+
         for (int i = 0; i < numOfPoints; i++)
         {
-            int indexPoint = Random.Range(0, defensePoints.Count);
-            GameObject randomPoint = defensePoints[indexPoint];
+            int indexPoint = Random.Range(0, points.Count);
+            GameObject randomPoint = points[indexPoint];
 
-            pointsToHit.Add(randomPoint);
-            defensePoints.RemoveAt(indexPoint);
+            duplicatePoints.Add(randomPoint);
+
+            points.Clear();
+            for( int x = 0; x < defensePoints.Count; x++)
+            {
+                if (!duplicatePoints.Contains(defensePoints[x]))
+                {
+                    points.Add(defensePoints[x]);
+                }
+            }
+
+            if(pointsToHit.Contains(randomPoint) == false)
+            {
+                pointsToHit.Add(randomPoint.gameObject);
+            }
+
+            
+            //defensePoints.RemoveAt(indexPoint);
         }
+
+        duplicatePoints.Clear();
+        points.Clear();
+
         
     }
     
