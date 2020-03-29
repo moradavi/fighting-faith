@@ -1303,6 +1303,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneNum: 0
   tapChange: 0
+  currentScene: 0
+  playerHealth: {fileID: 549108327}
 --- !u!4 &691433525
 Transform:
   m_ObjectHideFlags: 0
