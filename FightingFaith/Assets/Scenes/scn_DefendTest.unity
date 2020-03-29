@@ -538,7 +538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numOfPoints: 2
-  timeLimit: 3
+  timeLimit: 2
   defensePoints:
   - {fileID: 429304721}
   - {fileID: 1651419506}
@@ -550,6 +550,7 @@ MonoBehaviour:
   - {fileID: 1044453863}
   - {fileID: 1349275375}
   pointsToHit: []
+  patternComplete: 0
 --- !u!4 &1078682723
 Transform:
   m_ObjectHideFlags: 0
