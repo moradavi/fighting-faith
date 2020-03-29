@@ -10,6 +10,8 @@ public class ManageScenes : MonoBehaviour
     public bool tapChange;
     public int currentScene;
     public Health playerHealth;
+    public GameObject timerTracker;
+
 
     private void Start()
     {
@@ -49,7 +51,11 @@ public class ManageScenes : MonoBehaviour
             }
         }
 
-        Analytics.CustomEvent("SceneTimer");
+        //Analytics.CustomEvent("SceneTimer");
+
+
+        timerTracker.GetComponent<AnalyticsEventTracker>().TriggerEvent();
+
         SceneManager.LoadScene(sceneNum);       
     }
 }

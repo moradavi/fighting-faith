@@ -5293,6 +5293,7 @@ MonoBehaviour:
   tapChange: 1
   currentScene: 0
   playerHealth: {fileID: 0}
+  timerTracker: {fileID: 2040567196}
 --- !u!4 &949245837
 Transform:
   m_ObjectHideFlags: 0
