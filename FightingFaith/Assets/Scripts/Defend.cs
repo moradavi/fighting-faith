@@ -133,14 +133,14 @@ public class Defend : MonoBehaviour
     {
         ResetPattern();
         isDefending = true;
-        swipeScript.enabled = false;
+        swipeScript.isDefending = true;
     }
 
     public void EndDefend()
     {
         isDefending = false;
         enemy.StopAttacking();
-        swipeScript.enabled = true;
+        swipeScript.isDefending = false;
     }
 
     void ResetPattern()
