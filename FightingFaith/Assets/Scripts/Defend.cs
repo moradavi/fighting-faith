@@ -82,6 +82,7 @@ public class Defend : MonoBehaviour
                                 if (pointsToHit.Count == 0)
                                 {
                                     Debug.Log("Yay");
+                                    enemy.gameObject.GetComponentInChildren<FlashDamage>().FlashTrigger();
                                     onDefendSuccess.Invoke();
                                     EndDefend();
                                     patternComplete = true;
