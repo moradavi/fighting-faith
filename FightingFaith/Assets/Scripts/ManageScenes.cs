@@ -2,11 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Analytics;
 
 public class ManageScenes : MonoBehaviour
 {
     public int sceneNum;
     public bool tapChange;
+    public int currentScene;
+
+    private void Start()
+    {
+        currentScene = SceneManager.GetActiveScene().buildIndex;
+    }
 
     public void Update()
     {
@@ -29,6 +36,7 @@ public class ManageScenes : MonoBehaviour
     //Load new sccene
     public void LoadNewScene()
     {
+        Analytics.CustomEvent("SceneTimer");
         SceneManager.LoadScene(sceneNum);
     }
 }
