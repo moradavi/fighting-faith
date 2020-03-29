@@ -8,6 +8,7 @@ public class Swipe2 : MonoBehaviour
     public float swipeSpeedThreshold;
 
     public GameObject mouseSprite;
+    public bool isDefending;
     
 
     // Update is called once per frame
@@ -22,18 +23,22 @@ public class Swipe2 : MonoBehaviour
         {
             mouseSprite.gameObject.transform.position = mousePos;
 
-            //Check if there is a collider from a gameobject that's an Enemy
-            Collider2D[] frameCol = Physics2D.OverlapPointAll(new Vector2(mousePos.x, mousePos.y), LayerMask.GetMask("Enemy"));
-            if ((Input.mousePosition - lastMousePosition).sqrMagnitude > swipeSpeedThreshold)
+            if (!isDefending)
             {
-                //if there is, deal damage and flash the enemy
-                foreach(Collider2D col in frameCol)
+                //Check if there is a collider from a gameobject that's an Enemy
+                Collider2D[] frameCol = Physics2D.OverlapPointAll(new Vector2(mousePos.x, mousePos.y), LayerMask.GetMask("Enemy"));
+                if ((Input.mousePosition - lastMousePosition).sqrMagnitude > swipeSpeedThreshold)
                 {
-                    Debug.Log("hit");
-                    col.gameObject.GetComponent<Health>().LoseHealth(1);
-                    col.gameObject.GetComponentInChildren<FlashDamage>().FlashTrigger();
+                    //if there is, deal damage and flash the enemy
+                    foreach (Collider2D col in frameCol)
+                    {
+                        Debug.Log("hit");
+                        col.gameObject.GetComponent<Health>().LoseHealth(1);
+                        col.gameObject.GetComponentInChildren<FlashDamage>().FlashTrigger();
+                    }
                 }
             }
+            
             
             lastMousePosition = Input.mousePosition;
         }
