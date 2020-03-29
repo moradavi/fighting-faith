@@ -249,6 +249,14 @@ MonoBehaviour:
   enemyCollider: {fileID: 0}
   regularSpeed: 0
   enragedSpeed: 0
+  attackIntervalTime: 10
+  isAttacking: 0
+  attackCodeEnabled: 1
+  onAttack:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &4818729177366331215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,9 +287,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa81d85b2b3af94498c2ae9b723e0e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints: []
   waypointPauseTime: 2
   speed: 4
+  waypoints: []
   onTargetArrive:
     m_PersistentCalls:
       m_Calls: []

@@ -9,6 +9,7 @@ public class ManageScenes : MonoBehaviour
     public int sceneNum;
     public bool tapChange;
     public int currentScene;
+    public Health playerHealth;
 
     private void Start()
     {
@@ -36,7 +37,19 @@ public class ManageScenes : MonoBehaviour
     //Load new sccene
     public void LoadNewScene()
     {
+        //Check if in the encounter scene
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            if (playerHealth != null)
+            {
+                Analytics.CustomEvent("EndOfEncounter", new Dictionary<string, object>
+                {
+                { "Player Health", playerHealth.CurrentHealth }
+                });
+            }
+        }
+
         Analytics.CustomEvent("SceneTimer");
-        SceneManager.LoadScene(sceneNum);
+        SceneManager.LoadScene(sceneNum);       
     }
 }
