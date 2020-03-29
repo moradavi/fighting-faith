@@ -4,16 +4,18 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class WaypointMovement : MonoBehaviour
-{  
-    public List<Transform> waypoints = new List<Transform>();
+{
+    //Movement Values
     public float waypointPauseTime;
     public float speed;
 
+    //Waypoint Data
+    public List<Transform> waypoints = new List<Transform>();
     Transform targetWaypoint;
     Transform currentWaypoint;
     int targetWaypointIndex;
 
-    //Properties
+    //Bool Properties
     public bool IsMoving { get; private set; }
     public bool IsStopped { get; private set; }
 
@@ -53,6 +55,8 @@ public class WaypointMovement : MonoBehaviour
         {
             IsMoving = false;
             IsStopped = true;
+            
+            //Cancels movement invokes
             CancelInvoke();
         }       
     }
@@ -68,6 +72,7 @@ public class WaypointMovement : MonoBehaviour
 
     void SetNewRandomTargetWaypoint()
     {
+        //Sets a new waypoint with the exception of the current waypoint
         targetWaypointIndex = RandomExcept(0, waypoints.Count, targetWaypointIndex);
         SetTargetWaypoint(waypoints[targetWaypointIndex]);
     }
@@ -79,6 +84,7 @@ public class WaypointMovement : MonoBehaviour
         IsMoving = true;
     }
 
+    //Returns a random interger within a range with the expection of the provided int
     public int RandomExcept(int min, int max, int except)
     {
         int random = Random.Range(min, max);

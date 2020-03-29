@@ -10,12 +10,14 @@ public class ManageScenes : MonoBehaviour
 
     public void Update()
     {
+        //Load new scene if tapChange boolean is checked and mouse is clicked
         if (tapChange && Input.GetMouseButtonDown(0))
         {
             LoadNewScene();
         }
     }
 
+    //Enable animator if the component is not null
     public void ChangeScene()
     {
         if (gameObject.GetComponent<Animator>() != null)
@@ -24,6 +26,7 @@ public class ManageScenes : MonoBehaviour
         }
     }
 
+    //Load new sccene
     public void LoadNewScene()
     {
         SceneManager.LoadScene(sceneNum);

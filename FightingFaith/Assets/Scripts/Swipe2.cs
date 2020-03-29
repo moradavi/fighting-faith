@@ -13,19 +13,25 @@ public class Swipe2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Get the position of the mouse on the screen
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = -1;
         
+        //If the player is pressing down input 
         if (Input.GetMouseButton(0))
         {
             mouseSprite.gameObject.transform.position = mousePos;
 
+            //Check if there is a collider from a gameobject that's an Enemy
             Collider2D[] frameCol = Physics2D.OverlapPointAll(new Vector2(mousePos.x, mousePos.y), LayerMask.GetMask("Enemy"));
             if ((Input.mousePosition - lastMousePosition).sqrMagnitude > swipeSpeedThreshold)
             {
+                //if there is, deal damage and flash the enemy
                 foreach(Collider2D col in frameCol)
                 {
                     Debug.Log("hit");
+                    col.gameObject.GetComponent<Health>().LoseHealth(1);
+                    col.gameObject.GetComponentInChildren<FlashDamage>().FlashTrigger();
                 }
             }
             
