@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Analytics;
 
 public class Enemy : MonoBehaviour
 {
@@ -66,6 +67,14 @@ public class Enemy : MonoBehaviour
         onAttack.Invoke();
         
         //Trigger Attack Animation
+    }
+
+    public void SendEnemyAnalytics()
+    {
+        Analytics.CustomEvent("enemyDied", new Dictionary<string, object>
+        {
+            { "numberOfAttacks", numAttacksTotal }
+        });
     }
 
     public void StopAttacking()

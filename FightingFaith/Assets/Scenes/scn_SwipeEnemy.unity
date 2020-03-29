@@ -2226,7 +2226,7 @@ PrefabInstance:
     - target: {fileID: 4818729177366331215, guid: f707b857244466842ba1ca2cbb483d8e,
         type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4818729177366331215, guid: f707b857244466842ba1ca2cbb483d8e,
         type: 3}
@@ -2251,6 +2251,31 @@ PrefabInstance:
     - target: {fileID: 4818729177366331215, guid: f707b857244466842ba1ca2cbb483d8e,
         type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818729177366331215, guid: f707b857244466842ba1ca2cbb483d8e,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818729177366331215, guid: f707b857244466842ba1ca2cbb483d8e,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818729177366331215, guid: f707b857244466842ba1ca2cbb483d8e,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 144951796}
+    - target: {fileID: 4818729177366331215, guid: f707b857244466842ba1ca2cbb483d8e,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SendEnemyAnalytics
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818729177366331215, guid: f707b857244466842ba1ca2cbb483d8e,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5673625259386413519, guid: f707b857244466842ba1ca2cbb483d8e,
