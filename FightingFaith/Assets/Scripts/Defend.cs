@@ -27,6 +27,8 @@ public class Defend : MonoBehaviour
     public UnityEvent onDefendFail;
     public UnityEvent onDefendSuccess;
 
+    public GameObject redFlash;
+
     //public List<GameObject> pointsNotHit;
 
     // Start is called before the first frame update
@@ -105,6 +107,7 @@ public class Defend : MonoBehaviour
                     }
 
                     Debug.Log("Failed Attempt");
+                    redFlash.GetComponent<Animator>().enabled = true;
                     onDefendFail.Invoke();
                     EndDefend();
 
@@ -131,6 +134,7 @@ public class Defend : MonoBehaviour
 
     public void BeginDefend()
     {
+        patternComplete = false;
         ResetPattern();
         isDefending = true;
         swipeScript.isDefending = true;
@@ -138,6 +142,7 @@ public class Defend : MonoBehaviour
 
     public void EndDefend()
     {
+        
         isDefending = false;
         enemy.StopAttacking();
         swipeScript.isDefending = false;
@@ -187,5 +192,7 @@ public class Defend : MonoBehaviour
             defensePoints[i].gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
     }
+
+
 
 }
