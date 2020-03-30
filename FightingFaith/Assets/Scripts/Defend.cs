@@ -121,7 +121,7 @@ public class Defend : MonoBehaviour
 
             }
 
-
+            //Show only the points used for current defense phase
             HideDefendPoints();
 
             for (int i = 0; i < pointsToHit.Count; i++)
@@ -135,6 +135,7 @@ public class Defend : MonoBehaviour
 
     public void BeginDefend()
     {
+        //Start defense and reset values/patterns
         patternComplete = false;
         ResetPattern();
         isDefending = true;
@@ -143,7 +144,7 @@ public class Defend : MonoBehaviour
 
     public void EndDefend()
     {
-        
+        //Signal defense is over
         isDefending = false;
         enemy.StopAttacking();
         swipeScript.isDefending = false;
@@ -151,19 +152,23 @@ public class Defend : MonoBehaviour
 
     void ResetPattern()
     {
+        //Make points have all the defense points
         for (int i = 0; i < defensePoints.Count; i++)
         {
             points.Add(defensePoints[i]);
         }
         
-
+        //Depending on the number of points necessary for defense,
         for (int i = 0; i < numOfPoints; i++)
         {
+            //Find a random point in list
             int indexPoint = Random.Range(0, points.Count);
             GameObject randomPoint = points[indexPoint];
 
+            //Make sure to count this as a point that cannot be duplicated
             duplicatePoints.Add(randomPoint);
 
+            //Resort points list to only contain points not in duplicate list so next loop it won't accidentally chose it
             points.Clear();
             for( int x = 0; x < defensePoints.Count; x++)
             {
@@ -173,6 +178,7 @@ public class Defend : MonoBehaviour
                 }
             }
 
+            //Add the random point to the hit points
             if(pointsToHit.Contains(randomPoint) == false)
             {
                 pointsToHit.Add(randomPoint.gameObject);
@@ -182,6 +188,7 @@ public class Defend : MonoBehaviour
             //defensePoints.RemoveAt(indexPoint);
         }
 
+        //Clear both temporary lists for next time pattern needs to be generated
         duplicatePoints.Clear();
         points.Clear();        
     }
