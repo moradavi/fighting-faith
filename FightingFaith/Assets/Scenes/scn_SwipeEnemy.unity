@@ -2304,6 +2304,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 5048767567076276415, guid: f707b857244466842ba1ca2cbb483d8e,
+        type: 3}
+      propertyPath: attackIntervalTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 726024733004007576, guid: f707b857244466842ba1ca2cbb483d8e,
         type: 3}
       propertyPath: m_Layer
@@ -2344,6 +2349,11 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[5]
       value: 
       objectReference: {fileID: 1433524691}
+    - target: {fileID: 3176808381268188329, guid: f707b857244466842ba1ca2cbb483d8e,
+        type: 3}
+      propertyPath: waypointPauseTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4818729177366331215, guid: f707b857244466842ba1ca2cbb483d8e,
         type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.size
@@ -2398,6 +2408,11 @@ PrefabInstance:
         type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818729177366331215, guid: f707b857244466842ba1ca2cbb483d8e,
+        type: 3}
+      propertyPath: maxHealth
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5673625259386413519, guid: f707b857244466842ba1ca2cbb483d8e,
         type: 3}
