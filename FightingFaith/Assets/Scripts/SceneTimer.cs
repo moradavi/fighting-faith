@@ -5,17 +5,18 @@ using UnityEngine.Analytics;
 
 public class SceneTimer : MonoBehaviour
 {
+    //Create Variable timer
     public float timer;
 
-    // Start is called before the first frame update
     void Start()
     {
+        //Reset timer
         timer = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        //Run timer
         timer += Time.deltaTime;
     }
 }
