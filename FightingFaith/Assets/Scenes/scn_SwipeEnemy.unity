@@ -3243,7 +3243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numOfPoints: 3
-  timeLimit: 2
+  timeLimit: 5
   defensePoints:
   - {fileID: 727429509}
   - {fileID: 364686643}

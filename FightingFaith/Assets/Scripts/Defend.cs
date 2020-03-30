@@ -53,7 +53,19 @@ public class Defend : MonoBehaviour
             //if the timer runs out, trigger an event in the future
             if (timer >= timeLimit)
             {
+                pointsToHit.Clear();
+
                 Debug.Log("TIMEOUT");
+                if (redFlash.GetComponent<Animator>().enabled == false)
+                {
+                    redFlash.GetComponent<Animator>().enabled = true;
+                }
+                else
+                {
+                    redFlash.GetComponent<Animator>().Play("anim_redFlash", -1, 0f);
+                }
+                onDefendFail.Invoke();
+                EndDefend();
             }
 
             //get the mouse position
@@ -108,7 +120,16 @@ public class Defend : MonoBehaviour
                     }
 
                     Debug.Log("Failed Attempt");
-                    redFlash.GetComponent<Animator>().enabled = true;
+
+                    if(redFlash.GetComponent<Animator>().enabled == false)
+                    {
+                        redFlash.GetComponent<Animator>().enabled = true;
+                    }
+                    else
+                    {
+                        redFlash.GetComponent<Animator>().Play("anim_redFlash", -1, 0f);
+                    }
+                    
                     onDefendFail.Invoke();
                     EndDefend();
 
@@ -148,6 +169,7 @@ public class Defend : MonoBehaviour
         isDefending = false;
         enemy.StopAttacking();
         swipeScript.isDefending = false;
+        timer = 0;
     }
 
     void ResetPattern()
