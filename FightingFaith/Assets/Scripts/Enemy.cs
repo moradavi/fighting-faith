@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public Health health;
     public WaypointMovement waypointMovement;
     public Collider2D enemyCollider;
+    public Animator animator;
 
     public float regularSpeed;
     public float enragedSpeed;
@@ -25,6 +26,8 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         LoadEnemyData();
+        waypointMovement.onTargetArrive.AddListener(Idle);
+        waypointMovement.onTargetLeave.AddListener(Move);
     }
 
     //Assign enemy data
@@ -65,8 +68,18 @@ public class Enemy : MonoBehaviour
         attackTimer++;
         numAttacksTotal++;
         onAttack.Invoke();
-        
+        animator.SetTrigger("Attack");
         //Trigger Attack Animation
+    }
+
+    void Idle()
+    {
+        animator.SetTrigger("Idle");
+    }
+
+    private void Move()
+    {
+        animator.SetTrigger("Move");
     }
 
     public void SendEnemyAnalytics()
