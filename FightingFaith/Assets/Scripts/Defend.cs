@@ -64,6 +64,7 @@ public class Defend : MonoBehaviour
                 {
                     redFlash.GetComponent<Animator>().Play("anim_redFlash", -1, 0f);
                 }
+                enemy.animator.SetTrigger("FollowThrough");
                 onDefendFail.Invoke();
                 EndDefend();
             }
@@ -95,6 +96,7 @@ public class Defend : MonoBehaviour
                                 {
                                     Debug.Log("Yay");
                                     enemy.gameObject.GetComponentInChildren<FlashDamage>().FlashTrigger();
+                                    enemy.animator.SetTrigger("Parry");
                                     onDefendSuccess.Invoke();
                                     EndDefend();
                                     patternComplete = true;
@@ -129,7 +131,8 @@ public class Defend : MonoBehaviour
                     {
                         redFlash.GetComponent<Animator>().Play("anim_redFlash", -1, 0f);
                     }
-                    
+
+                    enemy.animator.SetTrigger("FollowThrough");
                     onDefendFail.Invoke();
                     EndDefend();
 

@@ -21,6 +21,7 @@ public class WaypointMovement : MonoBehaviour
 
     //Events
     public UnityEvent onTargetArrive;
+    public UnityEvent onTargetLeave;
 
     // Start is called before the first frame update
     void Start()
@@ -82,6 +83,7 @@ public class WaypointMovement : MonoBehaviour
         targetWaypoint = waypoint;
         currentWaypoint = null;
         IsMoving = true;
+        onTargetLeave.Invoke();
     }
 
     //Returns a random interger within a range with the expection of the provided int
