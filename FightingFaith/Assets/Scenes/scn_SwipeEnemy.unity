@@ -2384,10 +2384,20 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 5048767567076276415, guid: f707b857244466842ba1ca2cbb483d8e,
+        type: 3}
+      propertyPath: attackIntervalTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 726024733004007576, guid: f707b857244466842ba1ca2cbb483d8e,
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 726024733004007576, guid: f707b857244466842ba1ca2cbb483d8e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3176808381268188329, guid: f707b857244466842ba1ca2cbb483d8e,
         type: 3}
@@ -2429,6 +2439,11 @@ PrefabInstance:
       propertyPath: waypointPauseTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3176808381268188329, guid: f707b857244466842ba1ca2cbb483d8e,
+        type: 3}
+      propertyPath: startWaypoint
+      value: 
+      objectReference: {fileID: 1645528609}
     - target: {fileID: 4818729177366331215, guid: f707b857244466842ba1ca2cbb483d8e,
         type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.size
@@ -2489,15 +2504,10 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 300
       objectReference: {fileID: 0}
-    - target: {fileID: 5048767567076276415, guid: f707b857244466842ba1ca2cbb483d8e,
-        type: 3}
-      propertyPath: attackIntervalTime
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 5673625259386413519, guid: f707b857244466842ba1ca2cbb483d8e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5673625259386413519, guid: f707b857244466842ba1ca2cbb483d8e,
         type: 3}
