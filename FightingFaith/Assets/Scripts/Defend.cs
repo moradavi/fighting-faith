@@ -29,13 +29,17 @@ public class Defend : MonoBehaviour
 
     public GameObject redFlash;
 
+    public float timeSpacing;
+
+    public int numPointsHit;
+
     //public List<GameObject> pointsNotHit;
 
     // Start is called before the first frame update
     void Start()
     {
 
-        HideDefendPoints();
+        //HideDefendPoints();
         timer = 0;
         enemy.onAttack.AddListener(BeginDefend);
         
@@ -53,7 +57,7 @@ public class Defend : MonoBehaviour
             //if the timer runs out, trigger an event in the future
             if (timer >= timeLimit)
             {
-                pointsToHit.Clear();
+                //pointsToHit.Clear();
 
                 Debug.Log("TIMEOUT");
                 if (redFlash.GetComponent<Animator>().enabled == false)
@@ -83,16 +87,21 @@ public class Defend : MonoBehaviour
                     //if it is a point that needs to be hit
                     if (pointsToHit.Contains(col.gameObject))
                     {
-                        for (int i = 0; i < pointsToHit.Count; i++)
-                        {
+                        //for (int i = 0; i < pointsToHit.Count; i++)
+                        //{
                             //count it as hit
-                            if (pointsToHit[i] == col.gameObject)
+                            if (pointsToHit[numPointsHit] == col.gameObject)
                             {
-                                //defensePoints.Add(pointsToHit[i]);
-                                pointsToHit.RemoveAt(i);
+                            //defensePoints.Add(pointsToHit[i]);
+                            //pointsToHit.RemoveAt(i);
+
+                                col.gameObject.GetComponent<Animator>().SetBool("pointSelected", true);
+                                numPointsHit++;
+                                col.gameObject.GetComponent<Collider2D>().enabled = false;
 
                                 //if all of the points are hit, player has succeeded in defending
-                                if (pointsToHit.Count == 0)
+                                //if (pointsToHit.Count == 0)
+                                if (pointsToHit.Count == numPointsHit)
                                 {
                                     Debug.Log("Yay");
                                     enemy.gameObject.GetComponentInChildren<FlashDamage>().FlashTrigger();
@@ -100,10 +109,26 @@ public class Defend : MonoBehaviour
                                     onDefendSuccess.Invoke();
                                     EndDefend();
                                     patternComplete = true;
+                                    numPointsHit = 0;
                                 }
 
                             }
+                        else
+                        {
+                            if (redFlash.GetComponent<Animator>().enabled == false)
+                            {
+                                redFlash.GetComponent<Animator>().enabled = true;
+                            }
+                            else
+                            {
+                                redFlash.GetComponent<Animator>().Play("anim_redFlash", -1, 0f);
+                            }
+                            enemy.animator.SetTrigger("FollowThrough");
+                            onDefendFail.Invoke();
+                            EndDefend();
                         }
+
+                        //}
                     }
                 }
 
@@ -116,10 +141,7 @@ public class Defend : MonoBehaviour
             {
                 if (!patternComplete)
                 {
-                    for (int i = 0; i < pointsToHit.Count; i++)
-                    {
-                        pointsToHit.Clear();
-                    }
+                    
 
                     Debug.Log("Failed Attempt");
 
@@ -146,13 +168,13 @@ public class Defend : MonoBehaviour
             }
 
             //Show only the points used for current defense phase
-            HideDefendPoints();
+            //HideDefendPoints();
 
-            for (int i = 0; i < pointsToHit.Count; i++)
-            {
-                pointsToHit[i].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            //for (int i = 0; i < pointsToHit.Count; i++)
+            //{
+            //    pointsToHit[i].gameObject.GetComponent<SpriteRenderer>().enabled = true;
 
-            }
+            //}
         }
         
     }
@@ -164,6 +186,15 @@ public class Defend : MonoBehaviour
         ResetPattern();
         isDefending = true;
         swipeScript.isDefending = true;
+
+        for ( int i = 0; i < pointsToHit.Count; i++)
+        {
+            //Invoke("FadeInPoints", i * timeSpacing * Time.deltaTime);
+
+            StartCoroutine(FadeInPoints(pointsToHit[i], i * timeSpacing * Time.deltaTime));
+        }
+        
+
     }
 
     public void EndDefend()
@@ -173,6 +204,19 @@ public class Defend : MonoBehaviour
         enemy.StopAttacking();
         swipeScript.isDefending = false;
         timer = 0;
+        Debug.Log(pointsToHit.Count);
+        for (int i = 0; i < pointsToHit.Count; i++)
+        {
+            Debug.Log("boop");
+            StartCoroutine(FadeOutPoints(pointsToHit[i], i * timeSpacing * Time.deltaTime));
+        }
+
+        for (int i = 0; i < pointsToHit.Count; i++)
+        {
+            pointsToHit.Clear();
+        }
+
+        GetComponent<DrawConnectLine>().EraseLines();
     }
 
     void ResetPattern()
@@ -226,6 +270,34 @@ public class Defend : MonoBehaviour
         }
     }
 
+    IEnumerator FadeInPoints(GameObject point, float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
 
+        if (point.gameObject.activeSelf == false)
+        {
+            point.gameObject.SetActive(true);
+        }
+        else
+        {
+            point.gameObject.GetComponent<Animator>().SetTrigger("pointFadeIn");
+        }
+
+        point.gameObject.GetComponent<Collider2D>().enabled = true;
+
+        yield return null;
+
+    }
+
+    IEnumerator FadeOutPoints(GameObject point, float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime/2);
+
+        point.gameObject.GetComponent<Animator>().SetTrigger("pointFadeOut");
+        point.gameObject.GetComponent<Animator>().SetBool("pointSelected", false);
+
+        yield return null;
+
+    }
 
 }
