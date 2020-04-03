@@ -215,6 +215,8 @@ public class Defend : MonoBehaviour
         {
             pointsToHit.Clear();
         }
+
+        GetComponent<DrawConnectLine>().EraseLines();
     }
 
     void ResetPattern()
