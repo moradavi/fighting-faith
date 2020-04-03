@@ -13,6 +13,9 @@ public class Enemy : MonoBehaviour
     public Collider2D enemyCollider;
     public Animator animator;
 
+    public AudioSource attackSoundEffect;
+    public AudioSource growlSoundEffect;
+
     public float regularSpeed;
     public float enragedSpeed;
     public float attackIntervalTime = 15f;
@@ -75,6 +78,12 @@ public class Enemy : MonoBehaviour
         //Trigger Attack Animation
     }
 
+    public void FollowThrough()
+    {
+        animator.SetTrigger("FollowThrough");
+        attackSoundEffect.Play();
+    }
+
     void Idle()
     {
         animator.SetTrigger("Idle");
@@ -85,7 +94,11 @@ public class Enemy : MonoBehaviour
         animator.SetTrigger("Move");
 
         if (readyToAttack)
+        {
             waypointMovement.GoToAttackWaypoint();
+            growlSoundEffect.Play();
+        }
+            
     }
 
     public void SendEnemyAnalytics()
