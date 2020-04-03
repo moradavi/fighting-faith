@@ -153,9 +153,18 @@ public class WaypointMovement : MonoBehaviour
     //Returns a random interger within a range with the expection of the provided int
     public int RandomExcept(int min, int max, int except)
     {
-        int random = Random.Range(min, max);
-        if (random >= except) random = (random + 1) % max;
-        return random;
+        //Put all valid number into a List
+        List<int> tempList = new List<int>();
+        for(int i = 0; i < max; i++)
+        {
+            if(i != except)
+                tempList.Add(i);
+        }
+
+        //Get a random number from that list
+        int random = Random.Range(min, tempList.Count);
+        return tempList[random];
+
     }
 
 }
