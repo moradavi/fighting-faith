@@ -1834,6 +1834,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 802335870}
   m_CullTransparentMesh: 0
+--- !u!1 &844562213
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 844562214}
+  m_Layer: 0
+  m_Name: AttackWaypoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &844562214
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844562213}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &852750167
 GameObject:
   m_ObjectHideFlags: 0
@@ -2349,6 +2379,11 @@ PrefabInstance:
       propertyPath: startWaypoint
       value: 
       objectReference: {fileID: 1645528609}
+    - target: {fileID: 3176808381268188329, guid: f707b857244466842ba1ca2cbb483d8e,
+        type: 3}
+      propertyPath: attackWaypoint
+      value: 
+      objectReference: {fileID: 844562214}
     - target: {fileID: 4818729177366331215, guid: f707b857244466842ba1ca2cbb483d8e,
         type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.size
