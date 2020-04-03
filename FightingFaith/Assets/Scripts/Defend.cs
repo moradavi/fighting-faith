@@ -33,6 +33,9 @@ public class Defend : MonoBehaviour
 
     public int numPointsHit;
 
+    public AudioSource successfulParrySound;
+    public AudioSource failParrySound;
+
     //public List<GameObject> pointsNotHit;
 
     // Start is called before the first frame update
@@ -68,8 +71,9 @@ public class Defend : MonoBehaviour
                 {
                     redFlash.GetComponent<Animator>().Play("anim_redFlash", -1, 0f);
                 }
-                enemy.animator.SetTrigger("FollowThrough");
+                enemy.FollowThrough();
                 onDefendFail.Invoke();
+                failParrySound.Play();
                 EndDefend();
             }
 
@@ -107,6 +111,7 @@ public class Defend : MonoBehaviour
                                     enemy.gameObject.GetComponentInChildren<FlashDamage>().FlashTrigger();
                                     enemy.animator.SetTrigger("Parry");
                                     onDefendSuccess.Invoke();
+                                    successfulParrySound.Play();
                                     EndDefend();
                                     patternComplete = true;
                                     numPointsHit = 0;
@@ -123,8 +128,9 @@ public class Defend : MonoBehaviour
                             {
                                 redFlash.GetComponent<Animator>().Play("anim_redFlash", -1, 0f);
                             }
-                            enemy.animator.SetTrigger("FollowThrough");
+                            enemy.FollowThrough();
                             onDefendFail.Invoke();
+                            failParrySound.Play();
                             EndDefend();
                         }
 
@@ -154,8 +160,9 @@ public class Defend : MonoBehaviour
                         redFlash.GetComponent<Animator>().Play("anim_redFlash", -1, 0f);
                     }
 
-                    enemy.animator.SetTrigger("FollowThrough");
+                    enemy.FollowThrough();
                     onDefendFail.Invoke();
+                    failParrySound.Play();
                     EndDefend();
 
                 }
