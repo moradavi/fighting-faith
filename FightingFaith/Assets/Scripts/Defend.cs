@@ -97,6 +97,7 @@ public class Defend : MonoBehaviour
 
                                 col.gameObject.GetComponent<Animator>().SetBool("pointSelected", true);
                                 numPointsHit++;
+                                col.gameObject.GetComponent<Collider2D>().enabled = false;
 
                                 //if all of the points are hit, player has succeeded in defending
                                 //if (pointsToHit.Count == 0)
@@ -112,8 +113,8 @@ public class Defend : MonoBehaviour
                                 }
 
                             }
-                            else
-                            {
+                        else
+                        {
                             if (redFlash.GetComponent<Animator>().enabled == false)
                             {
                                 redFlash.GetComponent<Animator>().enabled = true;
@@ -126,6 +127,7 @@ public class Defend : MonoBehaviour
                             onDefendFail.Invoke();
                             EndDefend();
                         }
+
                         //}
                     }
                 }
@@ -278,6 +280,8 @@ public class Defend : MonoBehaviour
         {
             point.gameObject.GetComponent<Animator>().SetTrigger("pointFadeIn");
         }
+
+        point.gameObject.GetComponent<Collider2D>().enabled = true;
 
         yield return null;
 
