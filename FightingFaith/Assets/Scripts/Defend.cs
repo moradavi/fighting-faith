@@ -141,7 +141,7 @@ public class Defend : MonoBehaviour
             {
                 if (!patternComplete)
                 {
-                    
+                    numPointsHit = 0;
 
                     Debug.Log("Failed Attempt");
 
@@ -274,16 +274,20 @@ public class Defend : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
 
-        if (point.gameObject.activeSelf == false)
+        if(isDefending == true)
         {
-            point.gameObject.SetActive(true);
-        }
-        else
-        {
-            point.gameObject.GetComponent<Animator>().SetTrigger("pointFadeIn");
-        }
+            if (point.gameObject.activeSelf == false)
+            {
+                point.gameObject.SetActive(true);
+            }
+            else
+            {
+                point.gameObject.GetComponent<Animator>().SetTrigger("pointFadeIn");
+            }
 
-        point.gameObject.GetComponent<Collider2D>().enabled = true;
+            point.gameObject.GetComponent<Collider2D>().enabled = true;
+        }
+        
 
         yield return null;
 

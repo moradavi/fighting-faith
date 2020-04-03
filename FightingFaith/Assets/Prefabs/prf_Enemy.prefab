@@ -193,6 +193,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61360bc96ed2524695b1fec207586c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderers:
+  - {fileID: 8312025224251820416}
+  - {fileID: 2613037983210669034}
+  - {fileID: 4987821387156141707}
+  defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  flashMaterial: {fileID: 2100000, guid: 1fa5d742c799ee64c9a7624c71eca339, type: 3}
+  flashTime: 0.08
 --- !u!95 &8100895076625933420
 Animator:
   serializedVersion: 3
@@ -354,6 +361,7 @@ MonoBehaviour:
   attackIntervalTime: 10
   isAttacking: 0
   attackCodeEnabled: 1
+  readyToAttack: 0
   onAttack:
     m_PersistentCalls:
       m_Calls: []
@@ -393,12 +401,18 @@ MonoBehaviour:
   speed: 4
   waypoints: []
   startWaypointIndex: 0
+  attackWaypoint: {fileID: 0}
   onTargetArrive:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onTargetLeave:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onArriveAtAttackWaypoint:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
@@ -581,6 +595,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6298389933040146228, guid: e4119e38a5830554d8af66ebb0551c9c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: -2120133056549726400, guid: e4119e38a5830554d8af66ebb0551c9c,
     type: 3}
@@ -593,6 +612,24 @@ GameObject:
 --- !u!4 &2002527225632268642 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4613874837100625966, guid: e4119e38a5830554d8af66ebb0551c9c,
+    type: 3}
+  m_PrefabInstance: {fileID: 6615120856796569932}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &8312025224251820416 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: -6298389933040146228, guid: e4119e38a5830554d8af66ebb0551c9c,
+    type: 3}
+  m_PrefabInstance: {fileID: 6615120856796569932}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &2613037983210669034 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 9191496565188141734, guid: e4119e38a5830554d8af66ebb0551c9c,
+    type: 3}
+  m_PrefabInstance: {fileID: 6615120856796569932}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &4987821387156141707 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2230949220354529223, guid: e4119e38a5830554d8af66ebb0551c9c,
     type: 3}
   m_PrefabInstance: {fileID: 6615120856796569932}
   m_PrefabAsset: {fileID: 0}
