@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     float attackTimer;
     float numAttacksTotal = 0;
     public bool attackCodeEnabled;
+    public bool readyToAttack;
 
     public UnityEvent onAttack;
 
@@ -28,6 +29,8 @@ public class Enemy : MonoBehaviour
         LoadEnemyData();
         waypointMovement.onTargetArrive.AddListener(Idle);
         waypointMovement.onTargetLeave.AddListener(Move);
+        waypointMovement.onArriveAtAttackWaypoint.AddListener(Attack);
+        readyToAttack = false;
     }
 
     //Assign enemy data
@@ -44,14 +47,14 @@ public class Enemy : MonoBehaviour
     {
         if (attackCodeEnabled)
         {
-            if ((attackTimer < attackIntervalTime) && (isAttacking == false))
+            if ((attackTimer < attackIntervalTime) && (readyToAttack == false))
             {
                 attackTimer += Time.deltaTime;
                 EnemyMovement();
             }
             else if (isAttacking == false)
             {
-                Attack();
+                readyToAttack = true; ;
             }
         }
         else
@@ -80,6 +83,9 @@ public class Enemy : MonoBehaviour
     private void Move()
     {
         animator.SetTrigger("Move");
+
+        if (readyToAttack)
+            waypointMovement.GoToAttackWaypoint();
     }
 
     public void SendEnemyAnalytics()
@@ -92,9 +98,18 @@ public class Enemy : MonoBehaviour
 
     public void StopAttacking()
     {
+        animator.SetTrigger("Idle");
+        Invoke("InvokeStopAttacking", 1f);
+    }
+
+    public void InvokeStopAttacking()
+    {
         isAttacking = false;
+        readyToAttack = false;
         attackTimer = 0;
         waypointMovement.ResumeWaypointMovement();
+        waypointMovement.SetNewRandomTargetWaypoint();
+
     }
 
     //Enemy speed changes after its health is reduced to 1/3 of maximum

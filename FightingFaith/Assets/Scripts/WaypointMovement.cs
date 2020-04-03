@@ -21,6 +21,7 @@ public class WaypointMovement : MonoBehaviour
     Transform targetWaypoint;
     Transform currentWaypoint;
     Transform homeWaypoint;
+    public Transform attackWaypoint;
     int targetWaypointIndex;
 
     //Bool Properties
@@ -31,6 +32,7 @@ public class WaypointMovement : MonoBehaviour
     //Events
     public UnityEvent onTargetArrive;
     public UnityEvent onTargetLeave;
+    public UnityEvent onArriveAtAttackWaypoint;
 
     // Start is called before the first frame update
     void Start()
@@ -57,12 +59,24 @@ public class WaypointMovement : MonoBehaviour
         //If arrived at the target waypoint
         if ((transform.position == targetWaypoint.position) && IsMoving == true)
         {
-            //Pause for set amount of time, then move to next waypoint
-            onTargetArrive.Invoke();
-            currentWaypoint = targetWaypoint;
-            homeWaypoint = targetWaypoint;
-            IsMoving = false;
-            Invoke("SetNewRandomTargetWaypoint", waypointPauseTime);
+            //Check if the target is the attack waypoint
+            if(targetWaypoint == attackWaypoint)
+            {
+                currentWaypoint = targetWaypoint;
+                homeWaypoint = targetWaypoint;
+                IsMoving = false;
+                onArriveAtAttackWaypoint.Invoke();               
+            }
+            else
+            {
+                //Pause for set amount of time, then move to next waypoint
+                onTargetArrive.Invoke();
+                currentWaypoint = targetWaypoint;
+                homeWaypoint = targetWaypoint;
+                IsMoving = false;
+                Invoke("SetNewRandomTargetWaypoint", waypointPauseTime);
+            }
+           
         }
     }
 
@@ -112,7 +126,7 @@ public class WaypointMovement : MonoBehaviour
         }      
     }
 
-    void SetNewRandomTargetWaypoint()
+    public void SetNewRandomTargetWaypoint()
     {
         //Sets a new waypoint with the exception of the current waypoint
         targetWaypointIndex = RandomExcept(0, waypoints.Count, targetWaypointIndex);
@@ -126,7 +140,14 @@ public class WaypointMovement : MonoBehaviour
         currentWaypoint = null;
         SetLerpValues(homeWaypoint.position, targetWaypoint.position);
         IsMoving = true;
-        onTargetLeave.Invoke();       
+
+        if(waypoint != attackWaypoint)
+            onTargetLeave.Invoke();       
+    }
+
+    public void GoToAttackWaypoint()
+    {
+        SetTargetWaypoint(attackWaypoint);
     }
 
     //Returns a random interger within a range with the expection of the provided int
