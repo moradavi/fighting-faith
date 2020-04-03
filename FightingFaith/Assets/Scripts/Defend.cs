@@ -141,7 +141,7 @@ public class Defend : MonoBehaviour
             {
                 if (!patternComplete)
                 {
-                    
+                    numPointsHit = 0;
 
                     Debug.Log("Failed Attempt");
 
