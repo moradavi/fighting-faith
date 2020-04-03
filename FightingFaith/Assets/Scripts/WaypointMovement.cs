@@ -155,16 +155,15 @@ public class WaypointMovement : MonoBehaviour
     {
         //Put all valid number into a List
         List<int> tempList = new List<int>();
-        for(int i = 0; i < max; i++)
+        for (int i = 0; i < max; i++)
         {
-            if(i != except)
+            if (i != except)
                 tempList.Add(i);
         }
 
         //Get a random number from that list
         int random = Random.Range(min, tempList.Count);
         return tempList[random];
-
     }
 
 }
