@@ -1952,7 +1952,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dca430fc45cdb78418c8af9070bf1651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneNum: 0
+  sceneNum: 5
   tapChange: 0
   currentScene: 0
   playerHealth: {fileID: 549108327}
@@ -5013,7 +5013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dca430fc45cdb78418c8af9070bf1651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneNum: 0
+  sceneNum: 5
   tapChange: 0
   currentScene: 0
   playerHealth: {fileID: 0}

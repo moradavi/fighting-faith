@@ -11,7 +11,7 @@ public class ManageScenes : MonoBehaviour
     public int currentScene;
     public Health playerHealth;
     public GameObject timerTracker;
-
+    public bool doublecall;
 
     private void Start()
     {
@@ -52,7 +52,10 @@ public class ManageScenes : MonoBehaviour
         }
 
         //Trigger SceneTimer analytics event
-        timerTracker.GetComponent<AnalyticsEventTracker>().TriggerEvent();
+        if (!doublecall)
+        {
+            timerTracker.GetComponent<AnalyticsEventTracker>().TriggerEvent();
+        }
 
         SceneManager.LoadScene(sceneNum);       
     }
