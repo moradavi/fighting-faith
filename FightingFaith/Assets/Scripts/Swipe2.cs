@@ -38,7 +38,7 @@ public class Swipe2 : MonoBehaviour
                         Debug.Log("hit");
 
                         //if the player is at minimum health, amp up time and attack strength of player.
-                        if(player.GetComponent<Health>().CurrentHealth <= 1)
+                        if(player.GetComponent<Health>().CurrentHealth > 1)
                         {
                             col.gameObject.GetComponent<Health>().LoseHealth(attackStrength);
                         }
