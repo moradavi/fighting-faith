@@ -4069,6 +4069,9 @@ MonoBehaviour:
   swipeSpeedThreshold: 400
   mouseSprite: {fileID: 1655668175}
   isDefending: 0
+  attackStrength: 1
+  player: {fileID: 549108326}
+  defend: {fileID: 1741849998}
 --- !u!4 &1395286197
 Transform:
   m_ObjectHideFlags: 0
@@ -4901,6 +4904,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numOfPoints: 3
   timeLimit: 5
+  extendedTime: 8
   defensePoints:
   - {fileID: 364686643}
   - {fileID: 1382713474}

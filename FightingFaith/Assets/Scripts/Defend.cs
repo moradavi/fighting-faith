@@ -10,6 +10,7 @@ public class Defend : MonoBehaviour
     public int numOfPoints;
 
     public float timeLimit;
+    public float extendedTime;
     float timer;
     
     public List<GameObject> defensePoints;
