@@ -17,11 +17,12 @@ public class DrawConnectLine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //if the player is defending
         if (defend.isDefending)
         {
             if (defend.numPointsHit > 0)
             {
+                //make the number of segments equal the number of points + one for the mouse
                 lineRenderer.positionCount = defend.numPointsHit + 1;
 
                 for (int i = 0; i < defend.numPointsHit; i++)
@@ -35,6 +36,7 @@ public class DrawConnectLine : MonoBehaviour
                 Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 mousePos.z = -1;
 
+                //set the last position to be the mouse
                 lineRenderer.SetPosition(lineRenderer.positionCount - 1, mousePos);
             }
         }      

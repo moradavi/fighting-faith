@@ -19,7 +19,11 @@ public class Health : MonoBehaviour
     public void LoseHealth(int damage)
     {
         if(damage >= 0)
+        {
             ChangeHealthBy(-damage);
+            Debug.Log(damage);
+        }
+            
         else
             Debug.LogWarning("Damage values must be positive");
     }
