@@ -18,21 +18,26 @@ public class DrawConnectLine : MonoBehaviour
     void Update()
     {
 
-        if(defend.numPointsHit > 0)
+        if (defend.isDefending)
         {
-            lineRenderer.positionCount = defend.numPointsHit + 1;
-
-            for (int i = 0; i < defend.numPointsHit; i++)
+            if (defend.numPointsHit > 0)
             {
-                lineRenderer.SetPosition(i, defend.pointsToHit[i].transform.position);
-                
+                lineRenderer.positionCount = defend.numPointsHit + 1;
+
+                for (int i = 0; i < defend.numPointsHit; i++)
+                {
+                    if (defend.pointsToHit.Count != 0)
+                    {
+                        lineRenderer.SetPosition(i, defend.pointsToHit[i].transform.position);
+                    }
+                }
+
+                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                mousePos.z = -1;
+
+                lineRenderer.SetPosition(lineRenderer.positionCount - 1, mousePos);
             }
-
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mousePos.z = -1;
-
-            lineRenderer.SetPosition(lineRenderer.positionCount - 1, mousePos);
-        }
+        }      
     }
 
     public void EraseLines()

@@ -37,16 +37,11 @@ public class Defend : MonoBehaviour
     public AudioSource successfulParrySound;
     public AudioSource failParrySound;
 
-    //public List<GameObject> pointsNotHit;
-
     // Start is called before the first frame update
     void Start()
     {
-
-        //HideDefendPoints();
         timer = 0;
-        enemy.onAttack.AddListener(BeginDefend);
-        
+        enemy.onAttack.AddListener(BeginDefend);      
     }
 
     // Update is called once per frame
@@ -56,13 +51,10 @@ public class Defend : MonoBehaviour
         {
             //track the time
             timer += Time.deltaTime;
-            //Debug.Log(timer);
 
             //if the timer runs out, trigger an event in the future
             if (timer >= timeLimit)
             {
-                //pointsToHit.Clear();
-
                 Debug.Log("TIMEOUT");
                 if (redFlash.GetComponent<Animator>().enabled == false)
                 {
@@ -92,20 +84,13 @@ public class Defend : MonoBehaviour
                     //if it is a point that needs to be hit
                     if (pointsToHit.Contains(col.gameObject))
                     {
-                        //for (int i = 0; i < pointsToHit.Count; i++)
-                        //{
-                            //count it as hit
                             if (pointsToHit[numPointsHit] == col.gameObject)
                             {
-                            //defensePoints.Add(pointsToHit[i]);
-                            //pointsToHit.RemoveAt(i);
 
                                 col.gameObject.GetComponent<Animator>().SetBool("pointSelected", true);
                                 numPointsHit++;
                                 col.gameObject.GetComponent<Collider2D>().enabled = false;
 
-                                //if all of the points are hit, player has succeeded in defending
-                                //if (pointsToHit.Count == 0)
                                 if (pointsToHit.Count == numPointsHit)
                                 {
                                     Debug.Log("Yay");
@@ -115,7 +100,6 @@ public class Defend : MonoBehaviour
                                     successfulParrySound.Play();
                                     EndDefend();
                                     patternComplete = true;
-                                    numPointsHit = 0;
                                 }
 
                             }
@@ -135,7 +119,6 @@ public class Defend : MonoBehaviour
                             EndDefend();
                         }
 
-                        //}
                     }
                 }
 
@@ -148,8 +131,6 @@ public class Defend : MonoBehaviour
             {
                 if (!patternComplete)
                 {
-                    numPointsHit = 0;
-
                     Debug.Log("Failed Attempt");
 
                     if(redFlash.GetComponent<Animator>().enabled == false)
@@ -174,15 +155,6 @@ public class Defend : MonoBehaviour
                 }
 
             }
-
-            //Show only the points used for current defense phase
-            //HideDefendPoints();
-
-            //for (int i = 0; i < pointsToHit.Count; i++)
-            //{
-            //    pointsToHit[i].gameObject.GetComponent<SpriteRenderer>().enabled = true;
-
-            //}
         }
         
     }
@@ -197,8 +169,6 @@ public class Defend : MonoBehaviour
 
         for ( int i = 0; i < pointsToHit.Count; i++)
         {
-            //Invoke("FadeInPoints", i * timeSpacing * Time.deltaTime);
-
             StartCoroutine(FadeInPoints(pointsToHit[i], i * timeSpacing * Time.deltaTime));
         }
         
@@ -212,6 +182,7 @@ public class Defend : MonoBehaviour
         enemy.StopAttacking();
         swipeScript.isDefending = false;
         timer = 0;
+        numPointsHit = 0;
         Debug.Log(pointsToHit.Count);
         for (int i = 0; i < pointsToHit.Count; i++)
         {
@@ -260,9 +231,6 @@ public class Defend : MonoBehaviour
             {
                 pointsToHit.Add(randomPoint.gameObject);
             }
-
-            
-            //defensePoints.RemoveAt(indexPoint);
         }
 
         //Clear both temporary lists for next time pattern needs to be generated
