@@ -9,7 +9,10 @@ public class Swipe2 : MonoBehaviour
 
     public GameObject mouseSprite;
     public bool isDefending;
-    
+
+    public int attackStrength;
+    public GameObject player;
+    public GameObject defend;
 
     // Update is called once per frame
     void Update()
@@ -33,7 +36,18 @@ public class Swipe2 : MonoBehaviour
                     foreach (Collider2D col in frameCol)
                     {
                         Debug.Log("hit");
-                        col.gameObject.GetComponent<Health>().LoseHealth(1);
+
+                        //if the player is at minimum health, amp up time and attack strength of player.
+                        if(player.GetComponent<Health>().CurrentHealth <= 1)
+                        {
+                            col.gameObject.GetComponent<Health>().LoseHealth(attackStrength);
+                        }
+                        else
+                        {
+                            col.gameObject.GetComponent<Health>().LoseHealth(attackStrength*3);
+                            defend.GetComponent<Defend>().timeLimit = defend.GetComponent<Defend>().extendedTime;
+                        }
+                        
                         col.gameObject.GetComponentInChildren<FlashDamage>().FlashTrigger();
                     }
                 }

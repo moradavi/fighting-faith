@@ -29,7 +29,7 @@ public class FlashDamage : MonoBehaviour
                     sp.material = defaultMaterial;
                 }
                 isFlashing = false;
-                
+                slashSound.Play();
                 timer = 0;
             }
         }
@@ -37,7 +37,7 @@ public class FlashDamage : MonoBehaviour
 
     public void FlashTrigger()
     {
-        slashSound.Play();
+      
         isFlashing = true;
         foreach(SpriteRenderer sp in spriteRenderers)
         {
